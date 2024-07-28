@@ -8,6 +8,7 @@ bot.on("message", async (message) => {
   try {
     if (
       `${message.chat.id}` === process.env.TARGET_CHAT_ID &&
+      !message.is_automatic_forward &&
       shouldDeleteMessage(message.text)
     ) {
       await bot.deleteMessage(message.chat.id, message.message_id);
